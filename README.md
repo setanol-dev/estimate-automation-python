@@ -23,28 +23,29 @@ This tool automates:
 Work in progress
 
 ## Workflow Design
-【Input】
-- CSVファイル（見積元データ）
-- カラム構成：
-  - item_name：品名
-  - quantity：数量（整数）
-  - unit_price：単価（数値）
-  - rush_flag：特急対応（0 or 1）
-  - discount_rate：割引率（0.0〜0.3）
+  ### Input
+  - CSV file (source data for estimation)
+  - Columns:
+    - item_name: item name
+    - quantity: quantity (integer)
+    - unit_price: unit price (numeric)
+    - rush_flag: rush order flag (0 or 1)
+    - discount_rate: discount rate (0.0–0.3)
+  
+  ### Process
+  - Load the CSV file
+  - For each row:
+    - Calculate subtotal as quantity × unit_price
+    - If rush_flag = 1, add 10% surcharge
+    - If discount_rate is specified, apply discount
+  - Calculate total amount by summing all rows
+  - Automatically generate an estimate ID (EST-YYYYMMDD-serial)
+  - Record execution timestamp
+  - Log any errors encountered during processing
+  
+  ### Output
+  - Excel file containing the estimation result
+  - File name: estimate_YYYYMMDD.xlsx
+  - Output directory: sample_output
+  - Processing log file (text)
 
-【Process】
-- CSVファイルを読み込む
-- 各行について以下を実施
-  - quantity × unit_price で小計を算出
-  - rush_flag = 1 の場合、小計に10%加算
-  - discount_rate が指定されている場合、割引適用
-- 全行の金額を合算し、合計金額を算出
-- 見積番号を「EST-YYYYMMDD-連番」で自動生成
-- 実行日時を記録
-- エラー行があれば処理ログに記録
-
-【Output】
-- 見積結果をまとめたExcelファイル
-- ファイル名：estimate_YYYYMMDD.xlsx
-- 出力先：sample_output フォルダ
-- 処理ログ（テキスト）
