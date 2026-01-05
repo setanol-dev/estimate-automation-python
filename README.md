@@ -50,3 +50,12 @@ Work in progress
 - Output directory: sample_output
 - Processing log file (text)
 
+## How to Run
+
+1. Prepare input CSV file under sample_input directory
+2. Install dependencies
+   pip install -r requirements.txt
+3. Run the script
+   python src/main.py
+4. Output Excel file will be generated under sample_output directory
+
