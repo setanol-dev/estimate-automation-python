@@ -1,64 +1,63 @@
-This tool automates Excel-based estimation work for small manufacturing
-and back-office teams by converting CSV data into formatted Excel outputs.
-
 # Estimate Automation Tool (Python)
 
 ## Overview
-This project is a Python-based business automation tool that generates estimates
-from CSV input files and outputs formatted documents automatically.
+This project is a Python-based business automation tool that converts CSV input
+files into formatted Excel estimation documents automatically.
+
+It is designed to reduce manual Excel work, prevent calculation errors, and
+speed up repetitive estimation tasks.
 
 ## Problem
-Manual estimation using Excel is time-consuming and error-prone.
+Many small teams still create estimates manually using Excel.
+This process is time-consuming, error-prone, and difficult to standardize.
 
 ## Solution
-This tool automates:
-- CSV-based input
-- Rule-based calculation
-- Automatic document generation
-- Simple logging
+This tool automates the estimation workflow by:
+- Reading structured CSV input files
+- Applying rule-based calculations
+- Generating Excel output files automatically
+- Logging execution details and errors
 
 ## Target Users
 - Small manufacturing teams
 - Back-office staff
 - Engineers handling repetitive estimation tasks
 
-## Status
-Work in progress
-
 ## Workflow Design
 
 ### Input
-- CSV file (source data for estimation)
-- Columns:
-  - item_name: item name
-  - quantity: quantity (integer)
-  - unit_price: unit price (numeric)
-  - rush_flag: rush order flag (0 or 1)
-  - discount_rate: discount rate (0.0–0.3)
+- CSV file (estimation source data)
+- Required columns:
+  - `item_name`: item name
+  - `quantity`: quantity (integer)
+  - `unit_price`: unit price (numeric)
+  - `rush_flag`: rush order flag (0 or 1)
+  - `discount_rate`: discount rate (0.0–0.3)
 
 ### Process
-- Load the CSV file
+- Load CSV file
 - For each row:
-  - Calculate subtotal as quantity × unit_price
-  - If rush_flag = 1, add 10% surcharge
-  - If discount_rate is specified, apply discount
-- Calculate total amount by summing all rows
-- Automatically generate an estimate ID (EST-YYYYMMDD-serial)
+  - Calculate subtotal as `quantity × unit_price`
+  - Add 10% surcharge if `rush_flag = 1`
+  - Apply discount if `discount_rate` is specified
+- Sum all subtotals to calculate total amount
+- Generate estimate ID in format `EST-YYYYMMDD-XXX`
 - Record execution timestamp
-- Log any errors encountered during processing
+- Log invalid rows or processing errors
 
 ### Output
-- Excel file containing the estimation result
-- File name: estimate_YYYYMMDD.xlsx
-- Output directory: sample_output
+- Excel file containing estimation results
+- File name format: `estimate_YYYYMMDD.xlsx`
+- Output directory: `sample_output/`
 - Processing log file (text)
 
 ## How to Run
 
-1. Prepare input CSV file under sample_input directory
-2. Install dependencies
-   pip install -r requirements.txt
-3. Run the script
-   python src/main.py
-4. Output Excel file will be generated under sample_output directory
+1. Place your input CSV file into the `sample_input/` directory
+2. Install dependencies:
+3. Run the script:
+4. The generated Excel file will appear in the `sample_output/` directory
 
+## Status
+Work in progress.
+This project is intended as a portfolio sample for business automation tasks.
