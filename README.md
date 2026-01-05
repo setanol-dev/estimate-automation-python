@@ -23,29 +23,30 @@ This tool automates:
 Work in progress
 
 ## Workflow Design
-  ### Input
-  - CSV file (source data for estimation)
-  - Columns:
-    - item_name: item name
-    - quantity: quantity (integer)
-    - unit_price: unit price (numeric)
-    - rush_flag: rush order flag (0 or 1)
-    - discount_rate: discount rate (0.0–0.3)
-  
-  ### Process
-  - Load the CSV file
-  - For each row:
-    - Calculate subtotal as quantity × unit_price
-    - If rush_flag = 1, add 10% surcharge
-    - If discount_rate is specified, apply discount
-  - Calculate total amount by summing all rows
-  - Automatically generate an estimate ID (EST-YYYYMMDD-serial)
-  - Record execution timestamp
-  - Log any errors encountered during processing
-  
-  ### Output
-  - Excel file containing the estimation result
-  - File name: estimate_YYYYMMDD.xlsx
-  - Output directory: sample_output
-  - Processing log file (text)
+
+### Input
+- CSV file (source data for estimation)
+- Columns:
+  - item_name: item name
+  - quantity: quantity (integer)
+  - unit_price: unit price (numeric)
+  - rush_flag: rush order flag (0 or 1)
+  - discount_rate: discount rate (0.0–0.3)
+
+### Process
+- Load the CSV file
+- For each row:
+  - Calculate subtotal as quantity × unit_price
+  - If rush_flag = 1, add 10% surcharge
+  - If discount_rate is specified, apply discount
+- Calculate total amount by summing all rows
+- Automatically generate an estimate ID (EST-YYYYMMDD-serial)
+- Record execution timestamp
+- Log any errors encountered during processing
+
+### Output
+- Excel file containing the estimation result
+- File name: estimate_YYYYMMDD.xlsx
+- Output directory: sample_output
+- Processing log file (text)
 
