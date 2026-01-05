@@ -1,3 +1,6 @@
+This tool automates Excel-based estimation work for small manufacturing
+and back-office teams by converting CSV data into formatted Excel outputs.
+
 # Estimate Automation Tool (Python)
 
 ## Overview
